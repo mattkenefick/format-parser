@@ -8,6 +8,7 @@ import RuleBraceStyle from './rule/brace-style.js';
 import RuleCapitalizedComments from './rule/capitalized-comments.js';
 import RuleCommaDangle from './rule/comma-dangle.js';
 import RuleCommaSpacing from './rule/comma-spacing.js';
+import RuleCommaStyle from './rule/comma-style.js';
 
 export default class ESLint
 {
@@ -34,6 +35,7 @@ export default class ESLint
             RuleCapitalizedComments,
             RuleCommaDangle,
             RuleCommaSpacing,
+            RuleCommaStyle,
         ];
     }
 
