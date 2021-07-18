@@ -38,28 +38,16 @@ export default class RuleArrayElementNewline extends CoreRule
     identify() {
         let output = this.default;
 
+        // Loop through arrays to determine how many commas are in each
+        // and what the respective line breaks are
         this.arrayBrackets.forEach(bracket => {
-            console.log(bracket);
             const commaCount = (bracket.match(/,/gms) || []).length;
-            console.log('sup', commaCount);
+            const breakCount = (bracket.match(/,\s*\n/gms) || []).length;
+
+            if (breakCount < commaCount) {
+                output = 'consistent';
+            }
         });
-
-        // const breakingBrackets = [...this.input.matchAll(/\[\s*\n/gsm)];
-        // const nonBreakingBrackets = [...this.input.matchAll(/\[[^\n]/gsm)];
-
-        // // If we use nonbreaking brackets, we can't use "always"
-        // if (nonBreakingBrackets.length) {
-        //     output = 'consistent';
-        // }
-
-        // // If we never use breaking brackets, but do use nonbreaking
-        // // @todo check this logic, because disallowing breaking brackets may be hasty
-        // if (!breakingBrackets.length && nonBreakingBrackets.length) {
-        //     output = 'never';
-        // }
-        // else if (nonBreakingBrackets.length) {
-        //     output = 'consistent';
-        // }
 
         return output;
     }
