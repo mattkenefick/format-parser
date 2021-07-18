@@ -25,11 +25,36 @@ export default class RulePrintWidth extends CoreRule
     }
 
     /**
+     * @return void
+     */
+    constructor(input) {
+        super(input);
+
+        // Default settings
+        this.settings.minLineLength = 80;
+        this.settings.maxLineLength = 120;
+    }
+
+    /**
      * Mandatory entry function to create a decision
      *
      * @return number
      */
     identify() {
-        return 120;
+        let output;
+        let lineLength = 0;
+
+        // Find longest line
+        this.lines.forEach(line => lineLength = Math.max(line.length, lineLength));
+
+        // Cap longest line
+        output = Math.max(this.settings.minLineLength,
+            Math.min(this.settings.maxLineLength, lineLength)
+        );
+
+        // Convert to the nearest 10
+        output = Math.ceil(output / 10) * 10;
+
+        return output;
     }
 }

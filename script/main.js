@@ -23,7 +23,7 @@ function Handle_OnClickParse(e) {
     e.preventDefault();
 
     const prettier = new Prettier({
-        format: 'yaml',
+        format: 'json',
     });
 
     const input = txtInput.value;

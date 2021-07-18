@@ -18,6 +18,15 @@ export default class CoreRule
     }
 
     /**
+     * Get individual lines of input as array
+     *
+     * @return array
+     */
+    get lines() {
+        return this.input.split('\n');
+    }
+
+    /**
      * @var string
      */
     get property() {
@@ -32,6 +41,7 @@ export default class CoreRule
      */
     constructor(input) {
         this.input = input;
+        this.settings = {};
     }
 
     /**
