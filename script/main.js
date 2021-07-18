@@ -88,8 +88,8 @@ function update() {
     txtPrettierOutput.value = prettierOutput;
 
     // Log for developer
-    console.log('ESLint:', eslintOutput);
-    console.log('Prettier:', prettierOutput);
+    // console.log('ESLint:', eslintOutput);
+    // console.log('Prettier:', prettierOutput);
 }
 
 update();
