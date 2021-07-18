@@ -39,6 +39,19 @@ export default class CoreRule
     }
 
     /**
+     * Get variable function blocks which could include nested
+     * blocks as well.
+     *
+     * e.g. => { ... }
+     * e.g. function() { ... }
+     *
+     * @return array
+     */
+    get functionBlocks() {
+        return this.getBracketBlock('{', '}', '=>|()\s?');
+    }
+
+    /**
      * Get variable object blocks which could include nested
      * blocks as well.
      *
