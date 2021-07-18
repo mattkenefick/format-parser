@@ -86,8 +86,9 @@ export default class CoreRule
 
     getBracketBlock(openingBracket = '{', closingBracket = '}', precedingMatcher = 'return|=') {
         const blocks = [];
-        const regexp = new RegExp(`(${precedingMatcher})\s*\${openingBracket}`, 'gms');
+        const regexp = new RegExp(`(${precedingMatcher})\\s*\\${openingBracket}`, 'gms');
         const openers = [...this.input.matchAll(regexp)];
+        // const openers = [...regexp.exec(this.input)];
 
         openers.forEach(opener => {
             let cb;
@@ -99,8 +100,8 @@ export default class CoreRule
 
             // Stack brackets
             do {
-                ob = this.input.indexOf('{', currentIndex);
-                cb = this.input.indexOf('}', currentIndex);
+                ob = this.input.indexOf(openingBracket, currentIndex);
+                cb = this.input.indexOf(closingBracket, currentIndex);
 
                 ob = ob === -1 ? Infinity : ob;
 
@@ -131,5 +132,4 @@ export default class CoreRule
     }
 
     // endregion: Helpers
-
 }
