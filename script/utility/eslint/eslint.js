@@ -10,6 +10,10 @@ import RuleCommaDangle from './rule/comma-dangle.js';
 import RuleCommaSpacing from './rule/comma-spacing.js';
 import RuleCommaStyle from './rule/comma-style.js';
 
+/**
+ * Compare our code to a list of rules defined here:
+ * https://eslint.org/docs/rules/
+ */
 export default class ESLint
 {
     /**

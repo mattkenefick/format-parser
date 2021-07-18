@@ -12,6 +12,10 @@ import RuleTabs from './rule/tabs.js';
 import RuleTrailingCommas from './rule/trailing-commas.js';
 import RuleVueIndentScriptAndStyle from './rule/vue-indent-script-and-style.js';
 
+/**
+ * Compare our code to a list of rules found here:
+ * https://prettier.io/docs
+ */
 export default class Prettier
 {
     /**
