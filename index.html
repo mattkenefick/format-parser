@@ -22,13 +22,26 @@ class Rectangle {
             foo: 'bar',
         };
     }
+
     // Getter
     get area() {
         return this.calcArea();
     }
+
     // Method
     calcArea() {
         return this.height * this.width;
+    }
+
+    // Arrow function parentheses
+    testArrowFunction() {
+        this.foo(x => {
+            xyz;
+        });
+
+        this.foo(x => xyz);
+
+        this.foo((value, index) => xyz);
     }
 }
 

@@ -1,5 +1,6 @@
 
 import Generator from './generator.js';
+import RuleArrowFunctionParentheses from './rule/arrow-function-parentheses.js';
 import RuleBracketSpacing from './rule/bracket-spacing.js';
 import RulePrintWidth from './rule/print-width.js';
 import RuleQuotes from './rule/quotes.js';
@@ -26,6 +27,7 @@ export default class Prettier
     constructor(settings = {}) {
         this.generator = new Generator(settings.format);
         this.rules = [
+            RuleArrowFunctionParentheses,
             RuleBracketSpacing,
             RulePrintWidth,
             RuleQuotes,
