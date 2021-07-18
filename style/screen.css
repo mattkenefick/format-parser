@@ -1,0 +1,19 @@
+
+* {
+    box-sizing: border-box;
+}
+
+/**
+ * Form
+ * -------------------------------------------------------------------------- */
+
+button {
+    padding: 1.5rem;
+    width: 100%;
+}
+
+textarea {
+    height: 40vh;
+    padding: 2rem;
+    width: 100%;
+}
