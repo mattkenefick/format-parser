@@ -30,7 +30,7 @@ export default class RuleSemiColons extends CoreRule
      * @return boolean
      */
     identify() {
-        let output;
+        let output = this.default;
 
         // Find all of our semi colon line endings
         const semicolons = [...this.input.matchAll(/;\s*$/gm)];

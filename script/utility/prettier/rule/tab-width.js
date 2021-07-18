@@ -41,7 +41,7 @@ export default class RuleTabWidth extends CoreRule
      * @return number
      */
     identify() {
-        let output;
+        let output = this.default;
 
         // Gather spaces from file to array
         let spaces = [...this.input.matchAll(/^[ ]+/gm)].map(value => value[0].length);

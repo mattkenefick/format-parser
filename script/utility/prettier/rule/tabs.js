@@ -30,7 +30,7 @@ export default class RuleTabs extends CoreRule
      * @return boolean
      */
     identify() {
-        let output;
+        let output = this.default;
 
         // Check if we have any tabs in the file
         output = !!this.input.match(/\t/gm);
