@@ -6,6 +6,7 @@ import RuleQuoteProps from './rule/quote-props.js';
 import RuleSemicolons from './rule/semicolons.js';
 import RuleTabWidth from './rule/tab-width.js';
 import RuleTabs from './rule/tabs.js';
+import RuleTrailingCommas from './rule/trailing-commas.js';
 
 export default class Prettier
 {
@@ -30,6 +31,7 @@ export default class Prettier
             RuleSemicolons,
             RuleTabWidth,
             RuleTabs,
+            RuleTrailingCommas,
         ];
     }
 
