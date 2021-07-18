@@ -6,6 +6,7 @@ import RuleArrayElementNewline from './rule/array-element-newline.js';
 import RuleBlockSpacing from './rule/block-spacing.js';
 import RuleBraceStyle from './rule/brace-style.js';
 import RuleCapitalizedComments from './rule/capitalized-comments.js';
+import RuleCommaDangle from './rule/comma-dangle.js';
 
 export default class ESLint
 {
@@ -30,6 +31,7 @@ export default class ESLint
             RuleBlockSpacing,
             RuleBraceStyle,
             RuleCapitalizedComments,
+            RuleCommaDangle,
         ];
     }
 
