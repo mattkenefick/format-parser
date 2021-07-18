@@ -4,6 +4,7 @@ import RuleArrayBracketNewline from './rule/array-bracket-newline.js';
 import RuleArrayBracketSpacing from './rule/array-bracket-spacing.js';
 import RuleArrayElementNewline from './rule/array-element-newline.js';
 import RuleBlockSpacing from './rule/block-spacing.js';
+import RuleBraceStyle from './rule/brace-style.js';
 
 export default class ESLint
 {
@@ -26,6 +27,7 @@ export default class ESLint
             RuleArrayBracketSpacing,
             RuleArrayElementNewline,
             RuleBlockSpacing,
+            RuleBraceStyle,
         ];
     }
 
