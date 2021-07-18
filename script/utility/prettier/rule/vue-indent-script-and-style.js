@@ -1,5 +1,5 @@
 
-import CoreRule from '../core/rule.js';
+import CoreRule from '../../core/rule.js';
 
 /**
  * Vue Indent Script And Style
