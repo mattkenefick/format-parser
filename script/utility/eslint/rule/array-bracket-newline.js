@@ -39,7 +39,7 @@ export default class RuleArrayBracketNewline extends CoreRule
         let output = this.default;
 
         const breakingBrackets = [...this.input.matchAll(/\[\s*\n/gsm)];
-        const nonBreakingBrackets = [...this.input.matchAll(/\[[^\n\s]/gsm)];
+        const nonBreakingBrackets = [...this.input.matchAll(/\[[^\n]/gsm)];
 
         // If we use nonbreaking brackets, we can't use "always"
         if (nonBreakingBrackets.length) {
