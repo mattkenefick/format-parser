@@ -2,6 +2,9 @@
 /**
  * This class helps us generate a config file
  *
+ * @note This is currently duplicated until we have a better understanding
+ * of how this differentiates from the ESLint generator. At a certain
+ * point, these will probably abstract away.
  */
 export default class Generator
 {
