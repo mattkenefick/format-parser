@@ -10,6 +10,7 @@ import RuleSemicolons from './rule/semicolons.js';
 import RuleTabWidth from './rule/tab-width.js';
 import RuleTabs from './rule/tabs.js';
 import RuleTrailingCommas from './rule/trailing-commas.js';
+import RuleVueIndentScriptAndStyle from './rule/vue-indent-script-and-style.js';
 
 export default class Prettier
 {
@@ -38,6 +39,7 @@ export default class Prettier
             RuleTabWidth,
             RuleTabs,
             RuleTrailingCommas,
+            RuleVueIndentScriptAndStyle,
         ];
     }
 
