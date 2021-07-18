@@ -41,7 +41,7 @@ export default class RulePrintWidth extends CoreRule
      * @return number
      */
     identify() {
-        let output;
+        let output = this.default;
         let lineLength = 0;
 
         // Find longest line
