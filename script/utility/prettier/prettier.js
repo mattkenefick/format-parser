@@ -1,5 +1,6 @@
 
 import Generator from './generator.js';
+import RuleBracketSpacing from './rule/bracket-spacing.js';
 import RulePrintWidth from './rule/print-width.js';
 import RuleQuotes from './rule/quotes.js';
 import RuleQuoteProps from './rule/quote-props.js';
@@ -25,6 +26,7 @@ export default class Prettier
     constructor(settings = {}) {
         this.generator = new Generator(settings.format);
         this.rules = [
+            RuleBracketSpacing,
             RulePrintWidth,
             RuleQuotes,
             RuleQuoteProps,
