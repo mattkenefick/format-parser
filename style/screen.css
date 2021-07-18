@@ -25,12 +25,29 @@ h1 {
     letter-spacing: 0.01rem;
 }
 
+h1 sup {
+    display: inline-block;
+    font-size: 0.85rem;
+    opacity: 0.85;
+    transform: translate(-2px, 0);
+}
+
 h3 {
     display: block;
     font-family: Barlow, Helvetica, Arial;
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+h3 mark {
+    background-color: #222;
+    border-radius: 4px;
+    color: #999;
+    display: inline-block;
+    font-size: 0.65rem;
+    margin-left: 0.5rem;
+    padding: 0.25rem 0.5rem;
 }
 
 p {
@@ -51,6 +68,22 @@ a:hover {
 hr {
     margin: 2rem 0;
     opacity: 0.1;
+}
+
+
+/**
+ * Header
+ * -------------------------------------------------------------------------- */
+
+header .action-github {
+    position: fixed;
+    right: 2rem;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    top: 2.1rem;
+}
+
+header .action-github:hover {
+    transform: scale(1.05);
 }
 
 

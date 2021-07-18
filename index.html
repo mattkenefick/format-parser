@@ -33,6 +33,13 @@ class Rectangle {
         this.test = {
             foo: 'bar',
         };
+
+        this.arrayOne = [1, 2, 3, 4];
+
+        this.arrayTwo = [
+            'one',
+            'two',
+        ];
     }
 
     // Getter
@@ -61,10 +68,12 @@ const square = new Rectangle(10, 10);
 
 console.log(square.area); // 100
                 </div>
-
                 <div id="output">
                     <header>
-                        <h1>Format Generator</h1>
+                        <h1>
+                            <span>Format Generator</span>
+                            <sup>v0.1</sup>
+                        </h1>
                         <p>
                             Paste JavaScript/TypeScript in the editor to the left and
                             we'll generate settings for you on behalf of:
@@ -72,6 +81,9 @@ console.log(square.area); // 100
                             and
                             <a href="https://eslint.org/" target="_blank"><strong>eslint</strong></a>.
                         </p>
+                        <a class="action-github" href="https://github.com/mattkenefick/format-parser" target="_blank" title="Fork on Github">
+                            <img src="./image/branding/github-white.png" width="30" />
+                        </a>
                     </header>
 
                     <label>
@@ -91,7 +103,10 @@ console.log(square.area); // 100
 
                         <hr />
 
-                        <h3>ESLint</h3>
+                        <h3>
+                            <span>ESLint</span>
+                            <mark>Incomplete</mark>
+                        </h3>
                         <textarea id="txtESLintOutput" placeholder="ESLint Output" readonly></textarea>
                     </section>
                 </div>
