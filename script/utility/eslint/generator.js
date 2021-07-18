@@ -78,6 +78,12 @@ export default class Generator
         // Iterate through rules
         this.map.forEach((value, key) => {
             value = typeof(value) === 'string' ? `"${value}"` : value;
+
+            if (typeof(value) === 'object') {
+                value = JSON.stringify(value, null, 4);
+                value = value.replace(/\n/gm, '\n' + indentation);
+            }
+
             config += `${indentation}"${key}": ["error", ${value}],\n`;
         })
 
@@ -109,6 +115,12 @@ export default class Generator
         // Iterate through rules
         this.map.forEach((value, key) => {
             value = typeof(value) === 'string' ? `"${value}"` : value;
+
+            if (typeof(value) === 'object') {
+                value = JSON.stringify(value, null, 4);
+                value = value.replace(/\n/gm, '\n' + indentation);
+            }
+
             config += `${indentation}${key}: ["error", ${value}],\n`;
         })
 
@@ -147,12 +159,29 @@ export default class Generator
      */
     toYAML() {
         let config = '';
-        let indentation = ' '.repeat(0);
+        let indentation = ' '.repeat(4);
+
+        // Rules
+        config += 'rules:\n';
 
         // Iterate through rules
         this.map.forEach((value, key) => {
-            value = typeof(value) === 'string' ? `"${value}"` : value;
-            config += `${indentation}${key}: ${value}\n`;
+            let index;
+
+            config += `${indentation}${key}:\n`;
+
+            // @todo Is this how YAML handles objects like this?
+            if (typeof(value) === 'object') {
+                for (index in value) {
+                    config += `${indentation}    ${index}: ${value[index]}\n`;
+                }
+            }
+            else {
+                config += `${indentation}    - ${value}\n`;
+            }
+
+            // Flag as error
+            config += `${indentation}    - error\n`;
         })
 
         return config;
