@@ -1,6 +1,7 @@
 
 import Generator from './generator.js';
 import RuleArrayBracketNewline from './rule/array-bracket-newline.js';
+import RuleArrayBracketSpacing from './rule/array-bracket-spacing.js';
 
 export default class ESLint
 {
@@ -20,6 +21,7 @@ export default class ESLint
         this.generator = new Generator(settings.format);
         this.rules = [
             RuleArrayBracketNewline,
+            RuleArrayBracketSpacing,
         ];
     }
 
