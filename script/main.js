@@ -86,10 +86,6 @@ function update() {
     // Display for user
     txtESLintOutput.value = eslintOutput;
     txtPrettierOutput.value = prettierOutput;
-
-    // Log for developer
-    // console.log('ESLint:', eslintOutput);
-    // console.log('Prettier:', prettierOutput);
 }
 
 update();
