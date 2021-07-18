@@ -47,6 +47,11 @@ export default class RuleTabWidth extends CoreRule
         let spaces = [...this.input.matchAll(/^[ ]+(?!\*)/gm)]
             .map(value => value[0].length);
 
+        // No spaces?
+        if (!spaces.length) {
+            return output;
+        }
+
         // Determine minimum value in this array
         let minimumValue = spaces.reduce((previous, current, index) => Math.min(previous, current));
 
