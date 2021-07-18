@@ -7,6 +7,18 @@
 export default class CoreRule
 {
     /**
+     * Get variable object blocks which could include nested
+     * blocks as well.
+     *
+     * e.g. var foo = [ ... ]
+     *
+     * @return array
+     */
+    get arrayBrackets() {
+        return this.getBracketBlock('[', ']');
+    }
+
+    /**
      * Default value is empty string. This getter has a dynamic return
      * value based on the rule type. It's common to be an integer or
      * boolean, but can be string as well.
@@ -38,46 +50,7 @@ export default class CoreRule
      * @return array
      */
     get objectBlocks() {
-        const blocks = [];
-        const openers = [...this.input.matchAll(/(return|=)\s*{/gms)];
-
-        openers.forEach(opener => {
-            let cb;
-            let ob;
-            let depth = 0;
-            let startIndex = opener.index + opener[0].length;
-            let currentIndex = opener.index;
-            let x = 0;
-
-            // Stack brackets
-            do {
-                ob = this.input.indexOf('{', currentIndex);
-                cb = this.input.indexOf('}', currentIndex);
-
-                // Opening bracket appears before closing bracket
-                if (ob < cb) {
-                    depth++;
-                    currentIndex = ob + 1;
-                }
-                else {
-                    depth--;
-                    currentIndex = cb + 1;
-                }
-
-                // Exit
-                if (cb < ob && depth === 0) {
-                    break;
-                }
-            } while (x++ < 10); // killswitch
-
-            // Grab block of string
-            const substring = this.input.substring(startIndex, cb);
-
-            // Add to block stack
-            blocks.push(substring);
-        });
-
-        return blocks;
+        return this.getBracketBlock('{', '}');
     }
 
     /**
@@ -106,4 +79,57 @@ export default class CoreRule
     identify() {
         return this.default;
     }
+
+
+    // region: Helpers
+    // ---------------------------------------------------------------------------
+
+    getBracketBlock(openingBracket = '{', closingBracket = '}', precedingMatcher = 'return|=') {
+        const blocks = [];
+        const regexp = new RegExp(`(${precedingMatcher})\s*\${openingBracket}`, 'gms');
+        const openers = [...this.input.matchAll(regexp)];
+
+        openers.forEach(opener => {
+            let cb;
+            let ob;
+            let depth = 0;
+            let startIndex = opener.index + opener[0].length;
+            let currentIndex = opener.index;
+            let x = 0;
+
+            // Stack brackets
+            do {
+                ob = this.input.indexOf('{', currentIndex);
+                cb = this.input.indexOf('}', currentIndex);
+
+                ob = ob === -1 ? Infinity : ob;
+
+                // Opening bracket appears before closing bracket
+                if (ob < cb) {
+                    depth++;
+                    currentIndex = ob + 1;
+                }
+                else {
+                    depth = Math.max(depth - 1, 0);
+                    currentIndex = cb + 1;
+                }
+
+                // Exit
+                if (cb < ob && depth === 0) {
+                    break;
+                }
+            } while (x++ < 10); // killswitch
+
+            // Grab block of string
+            const substring = this.input.substring(startIndex, cb);
+
+            // Add to block stack
+            blocks.push(substring);
+        });
+
+        return blocks;
+    }
+
+    // endregion: Helpers
+
 }
