@@ -18,7 +18,7 @@ import CoreRule from '../../core/rule.js';
 export default class RuleCommaSpacing extends CoreRule
 {
     /**
-     * @var string
+     * @var object
      */
     get default() {
         return {
