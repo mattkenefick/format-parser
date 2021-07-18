@@ -7,12 +7,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;700;900&display=swap">
         <link rel="stylesheet" href="./style/screen.css" media="screen" />
+
+        <!-- Immediate Style -->
         <style>
             html,
             body {
                 background-color: #1B1D20;
-                margin: 0;
-                padding: 0;
             }
         </style>
     </head>
@@ -68,14 +68,13 @@ console.log(square.area); // 100
                         <p>
                             Paste JavaScript/TypeScript in the editor to the left and
                             we'll generate settings for you on behalf of:
-                            <a href="https://prettier.io/" target="_blank"><strong>prettier</strong></a>.
+                            <a href="https://prettier.io/" target="_blank"><strong>prettier</strong></a>
+                            and
+                            <a href="https://eslint.org/" target="_blank"><strong>eslint</strong></a>.
                         </p>
                     </header>
 
-                    <hr />
-
                     <label>
-                        <span>Format</span>
                         <select id="optFormat">
                             <option value="json">JSON</span>
                             <option value="js">JS</span>
@@ -83,7 +82,18 @@ console.log(square.area); // 100
                             <option value="yaml">YAML</span>
                         </select>
                     </label>
-                    <textarea id="txtOutput" placeholder="Output" readonly></textarea>
+
+                    <hr />
+
+                    <section>
+                        <h3>Prettier</h3>
+                        <textarea id="txtPrettierOutput" placeholder="Prettier Output" readonly></textarea>
+
+                        <hr />
+
+                        <h3>ESLint</h3>
+                        <textarea id="txtESLintOutput" placeholder="ESLint Output" readonly></textarea>
+                    </section>
                 </div>
             </form>
         </main>
