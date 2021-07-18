@@ -47,7 +47,7 @@ export default class RulePrintWidth extends CoreRule
         // Find longest line
         this.lines.forEach(line => lineLength = Math.max(line.length, lineLength));
 
-        // Cap longest line
+        // Clamp longest line
         output = Math.max(this.settings.minLineLength,
             Math.min(this.settings.maxLineLength, lineLength)
         );

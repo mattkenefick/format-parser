@@ -25,11 +25,35 @@ export default class RuleTabWidth extends CoreRule
     }
 
     /**
+     * @return void
+     */
+    constructor(input) {
+        super(input);
+
+        // Default settings
+        this.settings.minTabWidth = 2;
+        this.settings.maxTabWidth = 16;
+    }
+
+    /**
      * Mandatory entry function to create a decision
      *
      * @return number
      */
     identify() {
-        return 4;
+        let output;
+
+        // Gather spaces from file to array
+        let spaces = [...this.input.matchAll(/^[ ]+/gm)].map(value => value[0].length);
+
+        // Determine minimum value in this array
+        let minimumValue = spaces.reduce((previous, current, index) => Math.min(previous, current));
+
+        // Clamp tab width
+        output = Math.max(this.settings.minTabWidth,
+            Math.min(this.settings.maxTabWidth, minimumValue)
+        );
+
+        return output;
     }
 }
