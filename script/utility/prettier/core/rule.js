@@ -27,6 +27,60 @@ export default class CoreRule
     }
 
     /**
+     * Get variable object blocks which could include nested
+     * blocks as well.
+     *
+     * We were using this but fails for matching nested blocks:
+     *     [...this.input.matchAll(/=\s*{(.*?)}/gms)];
+     *
+     * e.g. var foo = { ... }
+     *
+     * @return array
+     */
+    get objectBlocks() {
+        const blocks = [];
+        const openers = [...this.input.matchAll(/(return|=)\s*{/gms)];
+
+        openers.forEach(opener => {
+            let cb;
+            let ob;
+            let depth = 0;
+            let startIndex = opener.index + opener[0].length;
+            let currentIndex = opener.index;
+            let x = 0;
+
+            // Stack brackets
+            do {
+                ob = this.input.indexOf('{', currentIndex);
+                cb = this.input.indexOf('}', currentIndex);
+
+                // Opening bracket appears before closing bracket
+                if (ob < cb) {
+                    depth++;
+                    currentIndex = ob + 1;
+                }
+                else {
+                    depth--;
+                    currentIndex = cb + 1;
+                }
+
+                // Exit
+                if (cb < ob && depth === 0) {
+                    break;
+                }
+            } while (x++ < 10); // killswitch
+
+            // Grab block of string
+            const substring = this.input.substring(startIndex, cb);
+
+            // Add to block stack
+            blocks.push(substring);
+        });
+
+        return blocks;
+    }
+
+    /**
      * @var string
      */
     get property() {
