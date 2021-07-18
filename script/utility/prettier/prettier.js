@@ -18,8 +18,8 @@ export default class Prettier
      *
      * @return void
      */
-    constructor() {
-        this.generator = new Generator();
+    constructor(settings = {}) {
+        this.generator = new Generator(settings.format);
         this.rules = [
             RulePrintWidth,
             RuleTabWidth,

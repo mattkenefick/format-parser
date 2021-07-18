@@ -22,7 +22,9 @@ btnParse.addEventListener('click', Handle_OnClickParse);
 function Handle_OnClickParse(e) {
     e.preventDefault();
 
-    const prettier = new Prettier();
+    const prettier = new Prettier({
+        format: 'yaml',
+    });
 
     const input = txtInput.value;
     const output = prettier.parse(input);

@@ -30,8 +30,8 @@ export default class Generator
      *
      * @return void
      */
-    constructor() {
-        this.format = 'json';
+    constructor(format = 'json') {
+        this.format = format;
         this.map = new Map;
     }
 
@@ -44,6 +44,20 @@ export default class Generator
      */
     add(key, value) {
         this.map.set(key, value);
+
+        return this;
+    }
+
+    /**
+     * Change output format
+     *
+     * @todo Throw warning for bad input
+     *
+     * @param string format
+     * @return void
+     */
+    setFormat(format) {
+        this.format = format;
     }
 
     /**
@@ -79,7 +93,22 @@ export default class Generator
      * @return string
      */
     toJS() {
-        // Not Implemented
+        let config = '';
+        let indentation = ' '.repeat(4);
+
+        // Setup outer bounds
+        config += 'module.exports = {\n';
+
+        // Iterate through rules
+        this.map.forEach((value, key) => {
+            value = typeof(value) === 'string' ? `"${value}"` : value;
+            config += `${indentation}${key}: ${value},\n`;
+        })
+
+        // Complete outer bounds
+        config += '};\n';
+
+        return config;
     }
 
     /**
@@ -88,7 +117,16 @@ export default class Generator
      * @return string
      */
     toTOML() {
-        // Not Implemented
+        let config = '';
+        let indentation = ' '.repeat(0);
+
+        // Iterate through rules
+        this.map.forEach((value, key) => {
+            value = typeof(value) === 'string' ? `"${value}"` : value;
+            config += `${indentation}${key} = ${value}\n`;
+        })
+
+        return config;
     }
 
     /**
@@ -97,6 +135,15 @@ export default class Generator
      * @return string
      */
     toYAML() {
-        // Not Implemented
+        let config = '';
+        let indentation = ' '.repeat(0);
+
+        // Iterate through rules
+        this.map.forEach((value, key) => {
+            value = typeof(value) === 'string' ? `"${value}"` : value;
+            config += `${indentation}${key}: ${value}\n`;
+        })
+
+        return config;
     }
 }
