@@ -35,6 +35,18 @@ export default class RuleTrailingCommas extends CoreRule
         let hasNonTrailingCommas = false;
 
         // Determine if any have quotes
+        this.arrayBrackets.forEach(block => {
+            block = `{${block}}`;
+
+            // Checks for objects the end with a comma
+            hasTrailingCommas = [...block.matchAll(/,\s*[})]/gms)].length > 0 || hasTrailingCommas;
+
+            // Checks for lines that end without commas but also exist across
+            // multiple lines (as to avoid single line arrays)
+            hasNonTrailingCommas = [...block.matchAll(/[a-zA-Z'"\]\}]\s*\n\s*[})]/gms)].length > 0 || hasNonTrailingCommas;
+        });
+
+        // Determine if any have quotes
         this.objectBlocks.forEach(block => {
             block = `{${block}}`;
 
