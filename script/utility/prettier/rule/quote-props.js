@@ -34,17 +34,14 @@ export default class RuleQuoteProps extends CoreRule
         let hasQuotes = false;
         let hasNoQuotes = false;
 
-        // Find object blocks
-        const blocks = [...this.input.matchAll(/=\s*{(.*?)}/gms)];
-
         // Determine if any have quotes
-        blocks.forEach(block => {
+        this.objectBlocks.forEach(block => {
             if (!hasQuotes) {
-                hasQuotes = !!block[0].match(/['"]\s*:/);
+                hasQuotes = !!block.match(/['"]\s*:/);
             }
 
             if (!hasNoQuotes) {
-                hasNoQuotes = !!block[0].match(/[^'"]\s*:/);
+                hasNoQuotes = !!block.match(/[^'"]\s*:/);
             }
         });
 
