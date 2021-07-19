@@ -3,6 +3,30 @@
     box-sizing: border-box;
 }
 
+
+/* total width */
+*::-webkit-scrollbar {
+    background-color: transparent;
+    width: 16px;
+}
+
+/* background of the scrollbar except button or resizer */
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* scrollbar itself */
+*::-webkit-scrollbar-thumb {
+    background-color: #663066;
+    border-radius: 16px;
+    border: 2px solid #330033;
+}
+
+/* set button(top and bottom of the scrollbar) */
+*::-webkit-scrollbar-button {
+    display:none;
+}
+
 main {
     bottom: 0;
     left: 0;
@@ -70,6 +94,25 @@ hr {
     opacity: 0.1;
 }
 
+#canvasWrapper {
+    height: 100% !important;
+    opacity: 0.15;
+    pointer-events: none;
+    position: absolute;
+    transform: translate(-0%, 0);
+    top: 0;
+    width: 100% !important;
+}
+
+canvas {
+    background-color: transparent;
+    height: 100% !important;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100% !important;
+}
+
 
 /**
  * Header
@@ -116,14 +159,18 @@ button {
 
 #output {
     background: rgba(0, 0, 0, 0.25);
+    border-left: rgba(0, 0, 0, 0.5);
     color: #fff;
     height: 100vh;
     max-width: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding: 1rem 2rem;
     position: fixed;
     right: 0;
     top: 0;
     width: 50%;
+    z-index: 100;
 }
 
 #output label span {
@@ -158,5 +205,6 @@ button {
     font-size: 0.75rem;
     min-height: 200px;
     outline: none;
+    resize: none;
     width: 100%;
 }

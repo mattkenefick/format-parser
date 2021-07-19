@@ -111,3 +111,39 @@ function setupEditor() {
 
     return editor;
 }
+
+
+// Special Graphics
+// uFrequency, uStrength, uAmplitude, uDensity, uDeepPurple, uDeepGreen, uDeepBlue, uOpacity
+// ---------------------------------------------------------------------------
+
+let mouse = {
+    x: 0,
+    y: 0,
+    d: 0,
+}
+
+document.addEventListener('mousemove', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    mouse.d = Math.sqrt(
+        (Math.pow(window.innerWidth / 2 - mouse.x, 2))
+        +
+        (Math.pow(window.innerHeight / 2 - mouse.y, 2))
+    );
+});
+
+setInterval(() => {
+    const input = editor.session.getValue();
+    const length = input.length;
+
+    window.uFrequency = length % 10 / 5;
+    // window.uAmplitude = mouse.x / window.innerWidth * 4; //length % 20 / 10;
+    window.uStrength =length % 20 / 10; // mouse.d / window.innerWidth * 2;
+    window.uDeepPurple = mouse.y / window.innerHeight * 4;
+    window.uDeepGreen = 0.0; //(input.match(/{/gms) || []).length % 10 / 10;
+    window.uDeepBlue = (input.match(/,/gms) || []).length % 10 * 0.5;
+    window.uOpacity = (input.match(/{/gms) || []).length % 10 * 0.05;
+    window.uRotationX = mouse.x / 5000;
+    window.uRotationY = mouse.y / 5000;
+}, 250);
