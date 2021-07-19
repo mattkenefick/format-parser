@@ -7,7 +7,7 @@
 <br/>
 
 <p align="center">
-    <a href="https://github.com/chalkysticks/sdk-core" title="GitHub version">
+    <a href="https://github.com/mattkenefick/format-parser" title="GitHub version">
         <img src="https://img.shields.io/badge/version-v0.1.0-blue.svg" alt="v1.0.0" />
     </a>
     <a href="https://www.patreon.com/mattkenefick" title="Backers on Patreon">
@@ -28,7 +28,7 @@
 ## Progress
 
 There are still many ESLint rules left to configure. If you'd like to contribute, you can write additional regex rules in the
-`script/utility/eslint/rule` section.
+`script/utility/eslint/rule` section. View the [demo here](https://mattkenefick.github.io/format-parser).
 
 ## Bugs
 
