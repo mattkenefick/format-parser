@@ -133,6 +133,9 @@ document.addEventListener('mousemove', e => {
     );
 });
 
+window.uRotationX = 0;
+window.uRotationY = 0;
+
 setInterval(() => {
     const input = editor.session.getValue();
     const length = input.length;
@@ -144,6 +147,7 @@ setInterval(() => {
     window.uDeepGreen = 0.0; //(input.match(/{/gms) || []).length % 10 / 10;
     window.uDeepBlue = (input.match(/,/gms) || []).length % 10 * 0.5;
     window.uOpacity = (input.match(/{/gms) || []).length % 10 * 0.05;
-    window.uRotationX = mouse.x / 5000;
+    // window.uRotationX = mouse.x / 5000;
+    window.uRotationX += 0.01;
     window.uRotationY = mouse.y / 5000;
 }, 250);

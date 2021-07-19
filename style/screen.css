@@ -3,26 +3,21 @@
     box-sizing: border-box;
 }
 
-
-/* total width */
 *::-webkit-scrollbar {
     background-color: transparent;
     width: 16px;
 }
 
-/* background of the scrollbar except button or resizer */
 *::-webkit-scrollbar-track {
     background-color: transparent;
 }
 
-/* scrollbar itself */
 *::-webkit-scrollbar-thumb {
     background-color: #663066;
     border-radius: 16px;
     border: 2px solid #330033;
 }
 
-/* set button(top and bottom of the scrollbar) */
 *::-webkit-scrollbar-button {
     display:none;
 }
@@ -96,12 +91,17 @@ hr {
 
 #canvasWrapper {
     height: 100% !important;
-    opacity: 0.15;
+    opacity: 0;
     pointer-events: none;
     position: absolute;
-    transform: translate(-0%, 0);
     top: 0;
+    transition: opacity 3s ease-in-out;
+    transform: translate(-0%, 0);
     width: 100% !important;
+}
+
+.state-active #canvasWrapper {
+    opacity: 0.15;
 }
 
 canvas {
